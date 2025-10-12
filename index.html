@@ -223,11 +223,26 @@
         /* Dark mode styles */
         body.dark-mode {
             background-color: #121212;
-            color: #070303;
+            color: #f1f1f1;
 
         }
-        .intro.dark-mode {
-            background: #333;
+        #intro.dark-mode .card {
+            background: #2a2a2a; /* Dark background for intro card */
+            color: #f1f1f1; /* White text for contrast */
+        }
+
+        #intro.dark-mode button {
+            background: #2196f3; /* Blue button in dark mode for contrast */
+            color: #f1f1f1;
+        }
+
+        #intro.dark-mode button:hover {
+            background: #1976d2; /* Darker blue on hover */
+        }
+
+        .projects.dark-mode {
+            background: #2a2a2a; /* Dark background for projects sections */
+            color: #f1f1f1; /* White text for contrast */
         }
 
         header.dark-mode {
@@ -236,6 +251,19 @@
 
         .project-card.dark-mode {
             background: #333;
+        }
+
+        #certificate.dark-mode {
+            background: #2a2a2a; /* Dark background for certificate section */
+            color: #f1f1f1; /* White text for contrast */
+        }
+
+        #certificate.dark-mode .certificate {
+            border-color: #f1f1f1; /* White border for certificates in dark mode */
+        }
+
+        #certificate.dark-mode h2 {
+            color: #f1f1f1; /* White text for certificate heading */
         }
 
         footer.dark-mode {
@@ -262,8 +290,8 @@
         }
 
         .certificate {
-            height: 300px;
-            width: 500px;
+            height: 500px;
+            width: 700px;
             margin: 10px;
             border: 3px solid black;
         }
@@ -487,7 +515,7 @@
                 believe in writing clean, efficient code and constantly improving my skills to stay up-to-date with
                 industry trends. Whether it's tackling a challenging project or learning a new framework, I'm always
                 eager to push myself and grow as a developer."</p>
-            <button onclick="toggleDarkMode()">Dark Mode</button>
+            <button onclick="toggleDarkMode()">Dark Mode 🌙</button>
         </div>
     </section>
 
@@ -1357,11 +1385,29 @@
     </footer>
     <button id="scroll-to-top" onclick="scrollToTop()">↑</button>
     <script>
+
+        window.onload = function () {
+            // Disable browser scroll restoration if supported
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            // Force scroll to top
+            window.scrollTo(0, 0);
+            // Clear URL hash to prevent scrolling to #certificate
+            history.replaceState(null, '', window.location.pathname);
+        };
+
         function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.toggle('dark-mode');
             document.querySelector('header').classList.toggle('dark-mode');
+            document.querySelector('#intro').classList.toggle('dark-mode'); // Add for intro
+            document.querySelectorAll('.projects').forEach(section => section.classList.toggle('dark-mode')); // Add for all projects sections
+            document.querySelector('#certificate').classList.toggle('dark-mode'); // Add for certificate
             document.querySelectorAll('.project-card').forEach(card => card.classList.toggle('dark-mode'));
             document.querySelector('footer').classList.toggle('dark-mode');
+
+            const button = document.querySelector('#intro button');
+            button.textContent = isDarkMode ? 'Light Mode ☀️' : 'Dark Mode 🌙';
         }
 
         window.onscroll = function () {
