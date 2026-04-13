@@ -26,7 +26,6 @@
         header {
             background: linear-gradient(to right, rgba(0, 128, 128, 0.7), rgba(74, 144, 226, 0.7));
             width: 100%;
-            margin-bottom: 20%;
             top: 0;
             left: 0;
             padding: 20px;
@@ -209,9 +208,9 @@
         }
 
         /* Hide toggle on desktop */
-.menu-toggle {
-    display: none;
-}
+        .menu-toggle {
+            display: none;
+        }
 
         @keyframes bounce {
 
@@ -479,65 +478,66 @@
         }
 
         @media (max-width: 600px) {
-    body {
-        font-size: 16px;
-        padding: 10px;
-    }
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
 
-    header {
-        padding: 15px;
-        text-align: center;
-    }
+            header {
+                padding: 15px;
+                text-align: center;
+            }
 
-    #intro {
-        flex-direction: column;
-        align-items: center;
-    }
+            #intro {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    /* Hamburger button */
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.8em;
-        cursor: pointer;
-        color: inherit;
-    }
+            /* Hamburger button */
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.8em;
+                cursor: pointer;
+                color: inherit;
+            }
 
-    /* Hide nav links by default on mobile */
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: inherit; /* match your header/nav bg */
-    }
+            /* Hide nav links by default on mobile */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: inherit;
+                /* match your header/nav bg */
+            }
 
-    /* Show when active */
-    .nav-links.open {
-        display: flex;
-    }
+            /* Show when active */
+            .nav-links.open {
+                display: flex;
+            }
 
-    .nav-links a {
-        display: block;
-        margin: 10px 0;
-        font-size: 1em;
-        padding: 8px 0;
-    }
+            .nav-links a {
+                display: block;
+                margin: 10px 0;
+                font-size: 1em;
+                padding: 8px 0;
+            }
 
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .certificate {
-        width: 100%;
-        height: auto;
-    }
+            .certificate {
+                width: 100%;
+                height: auto;
+            }
 
-    .pic1 {
-        width: 100%;
-        height: auto;
-    }
-}
+            .pic1 {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 
@@ -547,28 +547,29 @@
         <nav>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <div class="nav-links" id="navLinks">
-            <a href="#intro">About</a>
-            <a href="#completeProjects">Complete Projects</a>
-            <a href="#projects">Projects</a>
-            <a href="#certificate">Certificates</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+                <a href="#intro">About</a>
+                <a href="#completeProjects">Complete Projects</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificate">Certificates</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </div>
         </nav>
     </header>
     <section id="intro">
         <div class="pic-container">
-            <img src="image/olegario_formal.png" class="pic1" alt="owner's profile picture" loading="lazy" onmouseover="swapImage(this, true)"
-        onmouseout="swapImage(this, false)">
+            <img src="image/olegario_formal.png" class="pic1" alt="owner's profile picture" loading="lazy"
+                onmouseover="swapImage(this, true)" onmouseout="swapImage(this, false)">
         </div>
         <div class="card">
             <h2>Welcome to My Portfolio</h2>
-            <p>"I'm an aspiring programmer with a strong work ethic and a passion for continuous learning. I enjoy
-                exploring new technologies, solving complex problems, and building user-friendly web applications. I
-                believe in writing clean, efficient code and constantly improving my skills to stay up-to-date with
-                industry trends. Whether it's tackling a challenging project or learning a new framework, I'm always
-                eager to push myself and grow as a developer."</p>
+            <p>"Junior developer with real-world project experience in Flutter, React, and full-stack web. I don't just
+                study programming — I build with it. Currently looking for a team where I can contribute and keep
+                growing."</p>
             <button onclick="toggleDarkMode()">Dark Mode 🌙</button>
+            <a href="https://drive.google.com/uc?export=download&id=1i0-Zrao4sV64hkPebDFfbNReAdZos9RM" target="_blank">
+                <button>📄 Download Resume</button>
+            </a>
         </div>
     </section>
 
@@ -578,101 +579,103 @@
         <div class="project-grid">
             <div class="project-card-wrapper">
                 <div class="animated-border"></div>
-        <div class="project-card">
-            <div class="project-image">
-                <img src="image/Lockalista_logo02.jpg" alt="LockaLista Preview">
-            </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/Lockalista_logo02.jpg" alt="LockaLista Preview">
+                    </div>
 
-            <h3>LockaLista (Capstone Project)</h3>
+                    <h3>LockaLista (Capstone Project)</h3>
 
-            <p>
-                A mobile application developed to help users discover hidden tourist spots,
-                local restaurants, and small businesses in Binangonan, Rizal, promoting
-                community growth and local tourism.
-            </p>
+                    <p>
+                        A mobile application developed to help users discover hidden tourist spots,
+                        local restaurants, and small businesses in Binangonan, Rizal, promoting
+                        community growth and local tourism.
+                    </p>
 
-            <div class="project-meta">
-                <span>📱 Flutter</span>
-                <span>🔥 Firebase</span>
-                <span>📍 GPS Navigation</span>
-                <span>☁️ Cloudinary</span>
-                <span>🎓 Capstone Project</span>
-            </div>
+                    <div class="project-meta">
+                        <span>📱 Flutter</span>
+                        <span>🔥 Firebase</span>
+                        <span>📍 GPS Navigation</span>
+                        <span>☁️ Cloudinary</span>
+                        <span>🎓 Capstone Project</span>
+                    </div>
 
-            <div class="project-links">
-                <button onclick="openVideo('https://youtu.be/R3s46MKjUII?si=YvUvRtqbAcr0ZEo-')">
-                    🎥 Demo
-                </button>
+                    <div class="project-links">
+                        <button onclick="openVideo('https://youtu.be/R3s46MKjUII?si=YvUvRtqbAcr0ZEo-')">
+                            🎥 Watch Full Demo
+                        </button>
 
-                <button onclick="downloadApk('https://drive.google.com/file/d/1NwiFvwFbiae8PGY_vX-nhBD-2agB9wMA/view?usp=sharing')">
-                    📥 Download APK
-                </button>
-            </div>
-        </div>
+                        <button
+                            onclick="downloadApk('https://drive.google.com/uc?export=download&id=1NwiFvwFbiae8PGY_vX-nhBD-2agB9wMA')">
+                            📥 Download APK
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="project-card-wrapper">
                 <div class="animated-border"></div>
-        <div class="project-card">
-            <div class="project-image">
-                <img src="image\bankabyahe.jfif" alt="BangkaByahe Preview">
-            </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/bankabyahe.jfif" alt="BangkaByahe Preview">
+                    </div>
 
-            <h3>BangkaByahe</h3>
+                    <h3>BangkaByahe</h3>
 
-            <p>
-                A commissioned mobile application developed to connect passengers and
-                boat operators for real-time ride booking and trip management.
-            </p>
+                    <p>
+                        A commissioned mobile application developed to connect passengers and
+                        boat operators for real-time ride booking and trip management.
+                    </p>
 
-            <div class="project-meta">
-                <span>📱 Flutter</span>
-                <span>🔥 Firebase</span>
-                <span>🔔 OneSignal</span>
-                <span>🌤️ Weather API</span>
-                <span>💼 Commissioned Project</span>
-            </div>
+                    <div class="project-meta">
+                        <span>📱 Flutter</span>
+                        <span>🔥 Firebase</span>
+                        <span>🔔 OneSignal</span>
+                        <span>🌤️ Weather API</span>
+                        <span>💼 Commissioned Project</span>
+                    </div>
 
-            <div class="project-links">
-                <button onclick="openVideo('https://youtu.be/nWoAzqfPwNA?si=6xuGmrsOQ5F32qfQ')">
-                    🎥 Demo
-                </button>
+                    <div class="project-links">
+                        <button onclick="openVideo('https://youtu.be/nWoAzqfPwNA?si=6xuGmrsOQ5F32qfQ')">
+                            🎥 Watch Full Demo
+                        </button>
 
-                <button onclick="downloadApk('https://drive.google.com/file/d/1vYYgkfyPEXFwjCIXheHrP_QwMnjkJl2m/view?usp=sharing')">
-                    📥 Download APK
-                </button>
-            </div>
-        </div>
+                        <button
+                            onclick="downloadApk('https://drive.google.com/uc?export=download&id=1vYYgkfyPEXFwjCIXheHrP_QwMnjkJl2m')">
+                            📥 Download APK
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="project-card-wrapper">
                 <div class="animated-border"></div>
-        <div class="project-card">
-            <div class="project-image">
-                <img src="image/aicon.jfif" alt="Aicon Control Panel Preview">
-            </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image/aicon.jfif" alt="Aicon Control Panel Preview">
+                    </div>
 
-            <h3>Aicon Control Panel (OJT Project)</h3>
+                    <h3>Aicon Control Panel (OJT Project)</h3>
 
-            <p>
-                A web-based control panel developed during on-the-job training to streamline
-                business operations for Aicon Construction Supply, General Trading, and Services
-                through efficient data and workflow management.
-            </p>
+                    <p>
+                        A web-based control panel developed during on-the-job training to streamline
+                        business operations for Aicon Construction Supply, General Trading, and Services
+                        through efficient data and workflow management.
+                    </p>
 
-            <div class="project-meta">
-                <span>⚛️ React</span>
-                <span>🟩 Express.js</span>
-                <span>🚀 Render</span>
-                <span>🌐 Web App</span>
-                <span>🏢 OJT Project</span>
-            </div>
+                    <div class="project-meta">
+                        <span>⚛️ React</span>
+                        <span>🟩 Express.js</span>
+                        <span>🚀 Render</span>
+                        <span>🌐 Web App</span>
+                        <span>🏢 OJT Project</span>
+                    </div>
 
-            <div class="project-links">
-                <button onclick="openVideo('https://www.youtube.com/watch?v=Bw_WybyqFy0')">
-                    🎥 Demo
-                </button>
-            </div>
-        </div>
+                    <div class="project-links">
+                        <button onclick="openVideo('https://www.youtube.com/watch?v=Bw_WybyqFy0')">
+                            🎥 Watch Full Demo
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1243,7 +1246,7 @@
 
 
 
-    <section class="projects" id="projects">
+    <section class="projects" id="projects_FED">
         <h2>Front End Development Libraries Certification Projects</h2>
         <div class="project-grid">
             <div class="project-card-wrapper">
@@ -1310,7 +1313,7 @@
 
 
 
-    <section class="projects" id="projects">
+    <section class="projects" id="projects_VC">
         <h2>Data Visualization Certification Projects</h2>
         <div class="project-grid">
             <div class="project-card-wrapper">
@@ -1550,6 +1553,17 @@
         </div>
     </footer>
     <button id="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <div id="downloadModal" class="modal">
+        <div class="modal-content download-box">
+            <h3>⚠️ Android Only</h3>
+            <p>This application is only available for Android devices.</p>
+
+            <button id="confirmDownload">Continue Download</button>
+            <button onclick="closeDownload()">Cancel</button>
+        </div>
+    </div>
+
     <script>
 
         window.onload = function () {
@@ -1667,12 +1681,12 @@
             closeDownload();
         };
         function swapImage(img, hover) {
-    if (hover) {
-        img.src = "image/olegario_caricature.png";
-    } else {
-        img.src = "image/olegario_formal.png";
-    }
-}
+            if (hover) {
+                img.src = "image/olegario_caricature.png";
+            } else {
+                img.src = "image/olegario_formal.png";
+            }
+        }
     </script>
 
     <div id="videoModal" class="modal">
@@ -1682,31 +1696,23 @@
         </div>
     </div>
 
-    <div id="downloadModal" class="modal">
-        <div class="modal-content download-box">
-            <h3>⚠️ Android Only</h3>
-            <p>This application is only available for Android devices.</p>
 
-            <button id="confirmDownload">Continue Download</button>
-            <button onclick="closeDownload()">Cancel</button>
-        </div>
-    </div>
 
     <script>
-    const toggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+        const toggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-    toggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
-
-    // Optional: close menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
+        toggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
         });
-    });
-</script>
+
+        // Optional: close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 
 
