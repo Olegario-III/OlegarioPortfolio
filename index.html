@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olegario's Portfolio</title>
     <link rel="stylesheet" href="skillStyles.css">
+    <link rel="stylesheet" href="threeproject.css">
     <style>
         html {
             scroll-behavior: smooth;
@@ -23,11 +24,16 @@
         }
 
         header {
-            background: linear-gradient(to right, #008080, #4A90E2);
+            background: linear-gradient(to right, rgba(0, 128, 128, 0.7), rgba(74, 144, 226, 0.7));
+            width: 100%;
+            margin-bottom: 20%;
+            top: 0;
+            left: 0;
             padding: 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            position: fixed;
+            overflow: auto;
+            z-index: 1000;
         }
 
         .project-image {
@@ -84,6 +90,7 @@
             height: auto;
             text-align: center;
             margin: 50px;
+            margin-top: 150px;
         }
 
         #intro .card {
@@ -201,6 +208,11 @@
             text-decoration: none;
         }
 
+        /* Hide toggle on desktop */
+.menu-toggle {
+    display: none;
+}
+
         @keyframes bounce {
 
             0%,
@@ -226,23 +238,30 @@
             color: #f1f1f1;
 
         }
+
         #intro.dark-mode .card {
-            background: #2a2a2a; /* Dark background for intro card */
-            color: #f1f1f1; /* White text for contrast */
+            background: #2a2a2a;
+            /* Dark background for intro card */
+            color: #f1f1f1;
+            /* White text for contrast */
         }
 
         #intro.dark-mode button {
-            background: #2196f3; /* Blue button in dark mode for contrast */
+            background: #2196f3;
+            /* Blue button in dark mode for contrast */
             color: #f1f1f1;
         }
 
         #intro.dark-mode button:hover {
-            background: #1976d2; /* Darker blue on hover */
+            background: #1976d2;
+            /* Darker blue on hover */
         }
 
         .projects.dark-mode {
-            background: #2a2a2a; /* Dark background for projects sections */
-            color: #f1f1f1; /* White text for contrast */
+            background: #2a2a2a;
+            /* Dark background for projects sections */
+            color: #f1f1f1;
+            /* White text for contrast */
         }
 
         header.dark-mode {
@@ -254,16 +273,20 @@
         }
 
         #certificate.dark-mode {
-            background: #2a2a2a; /* Dark background for certificate section */
-            color: #f1f1f1; /* White text for contrast */
+            background: #2a2a2a;
+            /* Dark background for certificate section */
+            color: #f1f1f1;
+            /* White text for contrast */
         }
 
         #certificate.dark-mode .certificate {
-            border-color: #f1f1f1; /* White border for certificates in dark mode */
+            border-color: #f1f1f1;
+            /* White border for certificates in dark mode */
         }
 
         #certificate.dark-mode h2 {
-            color: #f1f1f1; /* White text for certificate heading */
+            color: #f1f1f1;
+            /* White text for certificate heading */
         }
 
         footer.dark-mode {
@@ -295,6 +318,7 @@
             margin: 10px;
             border: 3px solid black;
         }
+
         #certificate {
             background-color: #e6f7ff;
             padding-top: 50px;
@@ -455,41 +479,65 @@
         }
 
         @media (max-width: 600px) {
-            body {
-                font-size: 16px;
-                padding: 10px;
-            }
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
 
-            header {
-                padding: 15px;
-                text-align: center;
-            }
-            #intro {
-                flex-direction: column;
-                align-items: center;
-            }
+    header {
+        padding: 15px;
+        text-align: center;
+    }
 
-            nav a {
-                display: block;
-                margin: 10px 0;
-                font-size: 1em;
-            }
+    #intro {
+        flex-direction: column;
+        align-items: center;
+    }
 
-            .project-grid {
-                grid-template-columns: 1fr;
-                /* stack projects in one column */
-            }
+    /* Hamburger button */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.8em;
+        cursor: pointer;
+        color: inherit;
+    }
 
-            .certificate {
-                width: 100%;
-                height: auto;
-            }
+    /* Hide nav links by default on mobile */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: inherit; /* match your header/nav bg */
+    }
 
-            .pic1 {
-                width: 100%;
-                height: auto;
-            }
-        }
+    /* Show when active */
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 10px 0;
+        font-size: 1em;
+        padding: 8px 0;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate {
+        width: 100%;
+        height: auto;
+    }
+
+    .pic1 {
+        width: 100%;
+        height: auto;
+    }
+}
     </style>
 </head>
 
@@ -497,25 +545,135 @@
     <header>
         <h1>Olegario P. Aleño III</h1>
         <nav>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <div class="nav-links" id="navLinks">
             <a href="#intro">About</a>
+            <a href="#completeProjects">Complete Projects</a>
             <a href="#projects">Projects</a>
             <a href="#certificate">Certificates</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
+            </div>
         </nav>
     </header>
     <section id="intro">
         <div class="pic-container">
-            <img src="image/olegario_formal.png" class="pic1" alt="owner's profile picture" loading="lazy">
+            <img src="image/olegario_formal.png" class="pic1" alt="owner's profile picture" loading="lazy" onmouseover="swapImage(this, true)"
+        onmouseout="swapImage(this, false)">
         </div>
         <div class="card">
             <h2>Welcome to My Portfolio</h2>
-            <p>"I'm an aspiring web programmer with a strong work ethic and a passion for continuous learning. I enjoy
+            <p>"I'm an aspiring programmer with a strong work ethic and a passion for continuous learning. I enjoy
                 exploring new technologies, solving complex problems, and building user-friendly web applications. I
                 believe in writing clean, efficient code and constantly improving my skills to stay up-to-date with
                 industry trends. Whether it's tackling a challenging project or learning a new framework, I'm always
                 eager to push myself and grow as a developer."</p>
             <button onclick="toggleDarkMode()">Dark Mode 🌙</button>
+        </div>
+    </section>
+
+
+    <section class="projects" id="completeProjects">
+        <h2>Complete Projects</h2>
+        <div class="project-grid">
+            <div class="project-card-wrapper">
+                <div class="animated-border"></div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="image/Lockalista_logo02.jpg" alt="LockaLista Preview">
+            </div>
+
+            <h3>LockaLista (Capstone Project)</h3>
+
+            <p>
+                A mobile application developed to help users discover hidden tourist spots,
+                local restaurants, and small businesses in Binangonan, Rizal, promoting
+                community growth and local tourism.
+            </p>
+
+            <div class="project-meta">
+                <span>📱 Flutter</span>
+                <span>🔥 Firebase</span>
+                <span>📍 GPS Navigation</span>
+                <span>☁️ Cloudinary</span>
+                <span>🎓 Capstone Project</span>
+            </div>
+
+            <div class="project-links">
+                <button onclick="openVideo('https://youtu.be/R3s46MKjUII?si=YvUvRtqbAcr0ZEo-')">
+                    🎥 Demo
+                </button>
+
+                <button onclick="downloadApk('https://drive.google.com/file/d/1NwiFvwFbiae8PGY_vX-nhBD-2agB9wMA/view?usp=sharing')">
+                    📥 Download APK
+                </button>
+            </div>
+        </div>
+            </div>
+
+            <div class="project-card-wrapper">
+                <div class="animated-border"></div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="image\bankabyahe.jfif" alt="BangkaByahe Preview">
+            </div>
+
+            <h3>BangkaByahe</h3>
+
+            <p>
+                A commissioned mobile application developed to connect passengers and
+                boat operators for real-time ride booking and trip management.
+            </p>
+
+            <div class="project-meta">
+                <span>📱 Flutter</span>
+                <span>🔥 Firebase</span>
+                <span>🔔 OneSignal</span>
+                <span>🌤️ Weather API</span>
+                <span>💼 Commissioned Project</span>
+            </div>
+
+            <div class="project-links">
+                <button onclick="openVideo('https://youtu.be/nWoAzqfPwNA?si=6xuGmrsOQ5F32qfQ')">
+                    🎥 Demo
+                </button>
+
+                <button onclick="downloadApk('https://drive.google.com/file/d/1vYYgkfyPEXFwjCIXheHrP_QwMnjkJl2m/view?usp=sharing')">
+                    📥 Download APK
+                </button>
+            </div>
+        </div>
+            </div>
+            <div class="project-card-wrapper">
+                <div class="animated-border"></div>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="image/aicon.jfif" alt="Aicon Control Panel Preview">
+            </div>
+
+            <h3>Aicon Control Panel (OJT Project)</h3>
+
+            <p>
+                A web-based control panel developed during on-the-job training to streamline
+                business operations for Aicon Construction Supply, General Trading, and Services
+                through efficient data and workflow management.
+            </p>
+
+            <div class="project-meta">
+                <span>⚛️ React</span>
+                <span>🟩 Express.js</span>
+                <span>🚀 Render</span>
+                <span>🌐 Web App</span>
+                <span>🏢 OJT Project</span>
+            </div>
+
+            <div class="project-links">
+                <button onclick="openVideo('https://www.youtube.com/watch?v=Bw_WybyqFy0')">
+                    🎥 Demo
+                </button>
+            </div>
+        </div>
+            </div>
         </div>
     </section>
 
@@ -1287,6 +1445,14 @@
                             <span class="progress-label">40%</span>
                         </div>
                     </div>
+
+                    <div class="skill">
+                        <span class="skill-name">Flutter</span>
+                        <div class="progress" data-level="50">
+                            <div class="progress-bar"></div>
+                            <span class="progress-label">50%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1472,13 +1638,76 @@
             observer.observe(skillsSection);
         })();
     </script>
+    <script>
+        let apkLink = "";
 
+        // 🎥 VIDEO
+        function openVideo(url) {
+            window.open(url, '_blank');
+        }
+
+        function closeVideo() {
+            document.getElementById("videoModal").style.display = "none";
+            document.getElementById("videoFrame").src = "";
+        }
+
+        // 📥 DOWNLOAD FLOW
+        function downloadApk(link) {
+            apkLink = link;
+            document.getElementById("downloadModal").style.display = "block";
+        }
+
+        function closeDownload() {
+            document.getElementById("downloadModal").style.display = "none";
+        }
+
+        // Confirm download
+        document.getElementById("confirmDownload").onclick = function () {
+            window.open(apkLink, "_blank");
+            closeDownload();
+        };
+        function swapImage(img, hover) {
+    if (hover) {
+        img.src = "image/olegario_caricature.png";
+    } else {
+        img.src = "image/olegario_formal.png";
+    }
+}
+    </script>
+
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVideo()">&times;</span>
+            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div id="downloadModal" class="modal">
+        <div class="modal-content download-box">
+            <h3>⚠️ Android Only</h3>
+            <p>This application is only available for Android devices.</p>
+
+            <button id="confirmDownload">Continue Download</button>
+            <button onclick="closeDownload()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+    const toggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // Optional: close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
 </body>
 
 
 </html>
-
-
-
-
-
