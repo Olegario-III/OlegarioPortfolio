@@ -1,0 +1,534 @@
+ html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        @property --angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        header {
+            background: linear-gradient(to right, rgba(0, 128, 128, 0.7), rgba(74, 144, 226, 0.7));
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            overflow: auto;
+            z-index: 1000;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 120px;
+            /* fixed height */
+            overflow: hidden;
+            /* crop image if too big */
+            border-radius: 8px 8px 0 0;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* keeps proportions, fills container */
+            display: block;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: white;
+            animation: slideDown 2s ease-out;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        nav a:hover {
+            color: #ff758c;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        #intro {
+            display: flex;
+            height: auto;
+            text-align: center;
+            margin: 50px;
+            margin-top: 150px;
+        }
+
+        #intro .card {
+            background: #e6f7ff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #intro h2 {
+            margin-top: 0;
+        }
+
+        #intro button {
+            background: #ff758c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #intro button:hover {
+            background: #ff5722;
+        }
+
+        .projects {
+            padding: 40px 20px;
+            background: #e6f7ff;
+            position: relative;
+            margin: 25px;
+            border-radius: 25px;
+        }
+
+        .projects h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            z-index: auto;
+        }
+
+        .project-card {
+            background: #00c4b4;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 20;
+            margin: 5px;
+            display: block;
+            position: static;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card-wrapper {
+            position: relative;
+            z-index: 1;
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        .animated-border {
+            content: '';
+            position: absolute;
+            border: 2px solid lime;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(from var(--angle), red, blue, yellow, green, violet, red);
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -9;
+            border-radius: 10px;
+            animation: 3s spin linear infinite;
+        }
+
+        /* .project-card-wrapper::before {
+            filter: blur(1.5rem)
+        its just a code in case you want it to glow
+        } */
+
+        .project-card-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #006d5b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff758c;
+            animation: bounce 0.5s;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Hide toggle on desktop */
+        .menu-toggle {
+            display: none;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #f1f1f1;
+
+        }
+
+        #intro.dark-mode .card {
+            background: #2a2a2a;
+            /* Dark background for intro card */
+            color: #f1f1f1;
+            /* White text for contrast */
+        }
+
+        #intro.dark-mode button {
+            background: #2196f3;
+            /* Blue button in dark mode for contrast */
+            color: #f1f1f1;
+        }
+
+        #intro.dark-mode button:hover {
+            background: #1976d2;
+            /* Darker blue on hover */
+        }
+
+        .projects.dark-mode {
+            background: #2a2a2a;
+            /* Dark background for projects sections */
+            color: #f1f1f1;
+            /* White text for contrast */
+        }
+
+        header.dark-mode {
+            background: linear-gradient(to right, #333, #555);
+        }
+
+        .project-card.dark-mode {
+            background: #333;
+        }
+
+        #certificate.dark-mode {
+            background: #2a2a2a;
+            /* Dark background for certificate section */
+            color: #f1f1f1;
+            /* White text for contrast */
+        }
+
+        #certificate.dark-mode .certificate {
+            border-color: #f1f1f1;
+            /* White border for certificates in dark mode */
+        }
+
+        #certificate.dark-mode h2 {
+            color: #f1f1f1;
+            /* White text for certificate heading */
+        }
+
+        footer.dark-mode {
+            background: #333;
+        }
+
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            z-index: 30;
+            left: 20px;
+            display: none;
+            background: #ff758c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #scroll-to-top:hover {
+            background: #ff5722;
+        }
+
+        .certificate {
+            height: 500px;
+            width: 700px;
+            margin: 10px;
+            border: 3px solid black;
+        }
+
+        #certificate {
+            background-color: #e6f7ff;
+            padding-top: 50px;
+            padding-right: 25px;
+            padding-left: 25px;
+            border-radius: 25px;
+        }
+
+        .cimg {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            object-fit: contain;
+            padding: 25px;
+        }
+
+        #certificate h2 {
+            text-align: center;
+            color: black;
+        }
+
+        .pic1 {
+            margin: 5px;
+            height: 300px;
+            width: 200px;
+            position: relative;
+        }
+
+        #pic {
+            display: flex;
+            margin-top: 50px;
+            justify-content: center;
+        }
+
+        .pic-container {
+            position: relative;
+            margin: auto;
+        }
+
+        .pic-container::after,
+        .pic-container::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(from var(--angle), transparent 70%, blue);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            animation: 3s spin linear infinite;
+        }
+
+        .pic-container::before {
+            filter: blur(1.5rem);
+            opacity: 0.5;
+        }
+
+
+        .contact {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--card-bg, #f9f9f9);
+            border-radius: 12px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .contact-form textarea {
+            resize: none;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background: #0077ff;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #005fcc;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: #0077ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark mode support */
+        body.dark-mode .contact {
+            background: #1e1e1e;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .contact-form button {
+            background: #2196f3;
+        }
+
+
+        @keyframes spin {
+            from {
+                --angle: 0deg;
+            }
+
+            to {
+                --angle: 360deg;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            header {
+                padding: 15px;
+                text-align: center;
+            }
+
+            #intro {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Hamburger button */
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.8em;
+                cursor: pointer;
+                color: inherit;
+            }
+
+            /* Hide nav links by default on mobile */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: inherit;
+                /* match your header/nav bg */
+            }
+
+            /* Show when active */
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 10px 0;
+                font-size: 1em;
+                padding: 8px 0;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate {
+                width: 100%;
+                height: auto;
+            }
+
+            .pic1 {
+                width: 100%;
+                height: auto;
+            }
+        }
