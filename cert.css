@@ -1,0 +1,71 @@
+/* cert.css */
+
+.cimg {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding: 16px 8px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+}
+
+.certificate {
+    flex: 0 0 auto;
+    height: 220px;
+    width: auto;
+    border-radius: 8px;
+    scroll-snap-align: start;
+    object-fit: cover;
+    cursor: pointer;              /* signals it's clickable */
+    transition: transform 0.2s ease;
+}
+
+.certificate:hover {
+    transform: scale(1.03);       /* little hover feedback */
+}
+
+.cimg::-webkit-scrollbar {
+    height: 8px;
+}
+.cimg::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+/* ---------- Modal ---------- */
+
+.cert-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.cert-modal.active {
+    display: flex;
+}
+
+.cert-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+.cert-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+}
