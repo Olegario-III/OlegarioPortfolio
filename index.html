@@ -9,6 +9,40 @@
     <link rel="stylesheet" href="threeproject.css">
     <link rel="stylesheet" href="majorStyle.css">
     <link rel="stylesheet" href="cert.css">
+    <style>
+        /* --- Collapsible "Practice Projects" sections --- */
+        .project-grid.collapsible .project-card-wrapper:nth-child(n+7) {
+            display: none;
+        }
+        .project-grid.collapsible.expanded .project-card-wrapper:nth-child(n+7) {
+            display: block;
+        }
+        .show-more-wrap {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .show-more-btn {
+            cursor: pointer;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 999px;
+            background: #2b2b2b;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+        .show-more-btn:hover {
+            background: #444;
+            transform: translateY(-1px);
+        }
+        body.dark .show-more-btn {
+            background: #e8e8e8;
+            color: #111;
+        }
+        body.dark .show-more-btn:hover {
+            background: #fff;
+        }
+    </style>
 </head>
 
 <body>
@@ -221,14 +255,9 @@
     </section>
 
 
-
-
-
-
-
     <section class="projects">
         <h2>Responsive Web Design Practice Projects</h2>
-        <div class="project-grid">
+        <div class="project-grid collapsible" id="rwdPracticeGrid">
             <div class="project-card-wrapper">
                 <div class="animated-border"></div>
                 <a href="catphotoapp.html" target="_blank">
@@ -410,14 +439,10 @@
                 </a>
             </div>
         </div>
+        <div class="show-more-wrap">
+            <button class="show-more-btn" data-target="rwdPracticeGrid">Show More</button>
+        </div>
     </section>
-
-
-
-
-
-
-
 
 
     <section class="projects">
@@ -482,14 +507,9 @@
     </section>
 
 
-
-
-
-
-
     <section class="projects">
         <h2>JavaScript Algorithms and Data Structures Practice Projects</h2>
-        <div class="project-grid">
+        <div class="project-grid collapsible" id="jsPracticeGrid">
             <div class="project-card-wrapper">
                 <div class="animated-border"></div>
                 <a href="pyramidGenerator.html" target="_blank">
@@ -711,11 +731,10 @@
                 </a>
             </div>
         </div>
+        <div class="show-more-wrap">
+            <button class="show-more-btn" data-target="jsPracticeGrid">Show More</button>
+        </div>
     </section>
-
-
-
-
 
 
     <section class="projects" id="projects_FED">
@@ -780,11 +799,6 @@
     </section>
 
 
-
-
-
-
-
     <section class="projects" id="projects_VC">
         <h2>Data Visualization Certification Projects</h2>
         <div class="project-grid">
@@ -847,14 +861,9 @@
     </section>
 
 
-
-
-
-
-
-
     <section id="certificate">
         <h2>My Certificates</h2>
+        <p class="cert-counter" id="certCounter">1 / 19</p>
         <div class="cimg">
             <img src="image/responsive web.png" class="certificate" loading="lazy">
             <img src="image/js1certificate.PNG" class="certificate" loading="lazy">
@@ -877,11 +886,10 @@
             <img src="image/Generative AI in Practice_certificate.jpg" class="certificate" loading="lazy">
         </div>
         <div class="cert-modal" id="certModal">
-        <span class="cert-modal-close" id="certModalClose">&times;</span>
-        <img src="" alt="Certificate preview" id="certModalImg">
-    </div>
+            <span class="cert-modal-close" id="certModalClose">&times;</span>
+            <img src="" alt="Certificate preview" id="certModalImg">
+        </div>
     </section>
-
 
 
     <section id="skills" class="skills-section">
@@ -889,7 +897,6 @@
         <p>Technologies and tools I use most. Levels show my current comfort — I keep practicing and improving.</p>
 
         <div class="skills-grid">
-            <!-- Skill card: Front-end -->
             <div class="skill-card">
                 <h3>Front-end</h3>
                 <div class="skill-list">
@@ -935,7 +942,6 @@
                 </div>
             </div>
 
-            <!-- Skill card: Tools -->
             <div class="skill-card">
                 <h3>Tools & Workflow</h3>
                 <div class="skill-list">
@@ -965,7 +971,6 @@
                 </div>
             </div>
 
-            <!-- Skill card: Other -->
             <div class="skill-card">
                 <h3>Other</h3>
                 <div class="skill-list">
@@ -998,9 +1003,6 @@
 
         <p class="skills-note">Tip: values are self-assessed and updated as I learn more.</p>
     </section>
-
-
-
 
 
     <section id="contact" class="contact">
@@ -1042,7 +1044,58 @@
 
     <script src="majorScript.js"></script>
     <script src="cert.js"></script>
+    <script>
+        // Show More / Show Less for collapsible practice-project grids
+        document.querySelectorAll('.show-more-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const grid = document.getElementById(btn.dataset.target);
+                const expanded = grid.classList.toggle('expanded');
+                btn.textContent = expanded ? 'Show Less' : 'Show More';
+                if (!expanded) {
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Live "current / total" counter for the certificate scroll row
+        (function () {
+            const cimg = document.querySelector('.cimg');
+            const counter = document.getElementById('certCounter');
+            if (!cimg || !counter) return;
  
+            const certs = Array.from(cimg.querySelectorAll('.certificate'));
+            const total = certs.length;
+            counter.textContent = `1 / ${total}`;
+ 
+            let currentIndex = 0;
+ 
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    // pick the entry with the highest visible ratio inside the row
+                    let best = null;
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && (!best || entry.intersectionRatio > best.intersectionRatio)) {
+                            best = entry;
+                        }
+                    });
+                    if (best) {
+                        const idx = certs.indexOf(best.target);
+                        if (idx !== -1) {
+                            currentIndex = idx;
+                            counter.textContent = `${currentIndex + 1} / ${total}`;
+                        }
+                    }
+                },
+                {
+                    root: cimg,
+                    threshold: [0.25, 0.5, 0.75, 1]
+                }
+            );
+ 
+            certs.forEach((img) => observer.observe(img));
+        })();
+    </script>
+
 </body>
 
 
